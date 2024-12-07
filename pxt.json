@@ -1,0 +1,26 @@
+{
+    "name": "Rakettoppskytning - Utskytningsrape",
+    "description": "",
+    "dependencies": {
+        "core": "*",
+        "radio": "*",
+        "microphone": "*",
+        "RocketLink-S Egne Blokker TEST": "github:oysa88/rocketlink-s-egne-blokker-test#b6d14bda6ea90876a1c07ae18c0347537c212675"
+    },
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "targetVersions": {
+        "target": "7.0.51",
+        "targetId": "microbit"
+    },
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "blocksprj"
+}
