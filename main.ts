@@ -18,8 +18,10 @@ function lys () {
 input.onButtonPressed(Button.A, function () {
     if (armStatus) {
         armStatus = false
+        radio.sendString("armLP ikke OK")
     } else {
         armStatus = true
+        radio.sendString("armLP OK")
     }
 })
 function initialize () {
@@ -27,9 +29,6 @@ function initialize () {
     linkStatus = false
     klar = false
 }
-input.onButtonPressed(Button.AB, function () {
-    radio.sendString("oppskytning")
-})
 radio.onReceivedString(function (receivedString) {
     if (receivedString == "test link") {
         radio.sendString("link OK")
@@ -39,20 +38,18 @@ radio.onReceivedString(function (receivedString) {
             pins.digitalWritePin(DigitalPin.P0, 1)
             basic.pause(200)
             pins.digitalWritePin(DigitalPin.P0, 0)
+            initialize()
         }
     }
 })
 input.onButtonPressed(Button.B, function () {
     radio.sendString("test link")
-    sistSettAktiv = input.runningTime()
     linkStatus = false
 })
-let sistSettAktiv = 0
 let klar = false
 let linkStatus = false
 let armStatus = false
 radio.setGroup(1)
-let oppdateringsfrekvens = 200
 initialize()
 basic.forever(function () {
     if (armStatus && linkStatus) {
